@@ -37,8 +37,8 @@ const Navbar = () => {
                 <Image
                   alt="Careertronic company logo"
                   src="/Logo.png"
-                  width={500}
-                  height={500}
+                  width={226}
+                  height={58}
                   className="w-full h-auto"
                 />
               </div>
