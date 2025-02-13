@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-gradient: linear-gradient(
+      227.57deg,
+      rgba(217, 217, 217, 0.17) 1.77%,
+      rgba(115, 115, 115, 0.17) 100%
+    );
+    --border-gradient: linear-gradient(
+      29.61deg,
+      rgba(86, 86, 86, 0) 33.42%,
+      #dadada 106.95%
+    );
+    --blur-effect: blur(17.6px);
+  }
+  .slick-dots li button:before {
+    color: #898988 !important; /* Change to desired color */
+    opacity: 1; /* Ensure visibility */
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: white !important; /* Active dot color */
+  }
+  .slick-prev {
+    left: -10px;
+  }
+  
+  .slick-next {
+    right: -10px;
+  }
+  
+  
+  @media (min-width: 1024px) {
+    .slick-prev {
+      left: -25px;
+    }
+  
+    .slick-next {
+      right: -25px;
+    }
+  }
+  
+  /* Navbar */
+  .underline-animation {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .underline-animation::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .underline-animation:hover::after {
+    width: 100%;
+  }
+  /* Navbar css ends */
