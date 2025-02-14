@@ -2,17 +2,11 @@ import React from "react";
 import TrustedBy from "@/components/ResumeBuilder/TrustedBy";
 import ResumeHero from "@/components/ResumeBuilder/ResumeHero";
 import ResumeCard from "@/components/ResumeBuilder/ResumeCard";
-import {
-  featuresData,
-  features,
-  settings,
-  resumeTemplates,
-} from "@/lib/config";
+import ResumeCarousel from "@/components/ResumeBuilder/ResumeCarousel";
+
 import Image from "next/image";
 import IconHover from "@/components/ResumeBuilder/IconHover";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import { features, featuresData } from "@/lib/config";
 import dynamic from "next/dynamic";
 import ScrollReveal from "@/components/ScrollReveal";
 const ResumeAccordion = dynamic(
@@ -105,46 +99,31 @@ function page() {
       </div>
 
       <div className="bg-[url(/page3Bg.svg)] pt-20 pb-20 px-5 bg-cover bg-center h-auto w-full">
-      <ScrollReveal
-              animation="slideRight"
-              duration={500}
-              easing="smooth"
-              className="mb-12"
-            >
+        <ScrollReveal
+          animation="slideRight"
+          duration={500}
+          easing="smooth"
+          className="mb-12"
+        >
           <h2 className="text-white text-center text-2xl md:text-3xl font-semibold mb-20">
             Pick one of many world-class templates <br /> and build your resume
             in minutes
           </h2>
         </ScrollReveal>
-        {/* 
-        <AnimatedWrapper
-          initial={{ opacity: 0.8, x: -1000 }}
-          transition={{ duration: 1 }}
-        >
-          <Slider {...settings} className="max-w-5xl mx-auto">
-            {resumeTemplates.map((resume, index) => (
-              <div key={index} className="px-2">
-                <div className="rounded-lg p-4 shadow-md">
-                  <Image
-                    src={resume.image}
-                    alt={resume.name}
-                    className="w-full rounded-md"
-                    width={500}
-                    height={500}
-                  />
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </AnimatedWrapper>*/}
+
+        <ScrollReveal animation="slideRight" duration={500} easing="smooth">
+          <ResumeCarousel />
+        </ScrollReveal>
       </div>
 
       <div className="bg-slate-50 w-full h-auto">
         <div className="bg-slate-50 py-20 px-5 md:max-w-6xl lg:max-w-7xl mx-auto flex flex-col">
           <ScrollReveal
-              animation="slideRight"
-              duration={500}
-              easing="smooth" className="flex justify-start gap-8 items-stretch mb-16">
+            animation="slideRight"
+            duration={500}
+            easing="smooth"
+            className="flex justify-start gap-8 items-stretch mb-16"
+          >
             <div className="h-auto w-24">
               <Image
                 alt="Resumelogo"
@@ -154,9 +133,7 @@ function page() {
                 className="w-full h-full"
               />
             </div>
-            <div
-      
-             className="flex flex-col justify-between items-start py-1">
+            <div className="flex flex-col justify-between items-start py-1">
               <h3 className="text-3xl font-medium font-inter">
                 Have Questions About Writing A Great Resume ?
               </h3>
