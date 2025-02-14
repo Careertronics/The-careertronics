@@ -1,31 +1,25 @@
 "use client";
-
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect"; // ✅ Import mobile detector
 
 export default function AnimatedWrapper({
   children,
-  initial = { opacity: 0, y: -50 }, // Default Initial Animation
-  whileInView = { opacity: 1, y: 0, x: 0 }, // Default Animate State
+  initial = { opacity: 0, y: -50 },
+  whileInView = { opacity: 1, y: 0, x: 0 },
   viewport = { once: true },
-  transition = { duration: 0.5, ease: "easeOut" }, // Default Transition
-  className = "", // Additional Tailwind Classes
+  transition = { duration: 0.5, ease: "easeOut" },
+  className = "",
 }) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
+  if (isMobile) {
+    return <div className={className}>{children}</div>; // 🛑 No animation on mobile
+  }
 
   return (
     <motion.div
-      initial={isMobile ? false : initial}
-      whileInView={isMobile ? false : whileInView}
-      transition={isMobile ? {} : transition}
-      viewport={isMobile ? {} : viewport}
+      initial={initial}
+      whileInView={whileInView}
+      transition={transition}
+      viewport={viewport}
       className={className}
     >
       {children}
