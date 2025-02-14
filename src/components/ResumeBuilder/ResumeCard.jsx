@@ -1,7 +1,7 @@
 import Image from "next/image";
 import AnimatedWrapper from "@/components/AnimatedWrapper";
 
-const ResumeCard = ({ image, heading, description, groupIndex }) => {
+const ResumeCard = ({ image, heading, description, groupIndex,initial }) => {
   const getDelay = () => {
     const groupDelay = Math.floor(groupIndex / 3) * 0.3;
     const itemDelay = (groupIndex % 3) * 0.15;
@@ -10,7 +10,7 @@ const ResumeCard = ({ image, heading, description, groupIndex }) => {
 
   return (
     <AnimatedWrapper
-      initial={{ opacity: 0, x: -50 }}
+      initial={{opacity:0, ...initial}}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{
         duration: 0.8,
@@ -26,7 +26,7 @@ const ResumeCard = ({ image, heading, description, groupIndex }) => {
           width={44} // Specific size
           height={44}
           className="w-full"
-          loading="lazy"
+          loading="eager"
         />
       </div>
       <h3 className="text-neutral-200 font-poppins font-medium text-2xl">

@@ -51,7 +51,7 @@ function page() {
                     image={element.icon}
                     heading={element.title}
                     description={element.description}
-                    initial={{ x: idx >= 3 ? -500 : 500 }}
+                    initial={idx===3||idx===4||idx===5? {x:-500} : {x:500}}
                     groupIndex={idx}
                   />
                 ))}
