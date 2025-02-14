@@ -2,18 +2,14 @@
 import PropTypes from 'prop-types';
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { forwardRef } from "react";
-import { motion, useInView } from "framer-motion";
-const AccordionItem = forwardRef(
-  ({ title, content, isOpen, onClick, index }, ref) => {
-    const isInView = useInView(ref, {
-      margin: "-50% 0px -50% 0px",
-      once: true,
-    });
+import { motion } from 'framer-motion';
+const AccordionItem = 
+  ({ title, content, isOpen, onClick, index }) => {
+ 
     return (
       <motion.div
         initial={{ opacity: 0, x: -400 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{
           duration: 0.8,
           ease: [0.25, 0.75, 0.3, 1],
@@ -50,7 +46,6 @@ const AccordionItem = forwardRef(
       </motion.div>
     );
   }
-);
 
 AccordionItem.propTypes = {
   title: PropTypes.string.isRequired,
@@ -60,7 +55,7 @@ AccordionItem.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-const ResumeAccordion = forwardRef((props, ref) => {
+const ResumeAccordion = (props) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const items = [
@@ -104,7 +99,7 @@ const ResumeAccordion = forwardRef((props, ref) => {
       {items.map((item, index) => (
         <div key={index}>
           <AccordionItem
-            ref={ref}
+    
             title={item.title}
             content={item.content}
             isOpen={openIndex === index}
@@ -115,6 +110,6 @@ const ResumeAccordion = forwardRef((props, ref) => {
       ))}
     </div>
   );
-});
+}
 
 export default ResumeAccordion;

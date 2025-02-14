@@ -1,25 +1,21 @@
-"use client"; // Ensure this runs in a client component in Next.js 13+
 
-import { motion } from "framer-motion";
+import AnimatedWrapper from "@/components/AnimatedWrapper";
 
 function HeroLeft() {
   return (
     <div className="flex items-center justify-center p-6 md:pr-15 pt-12">
-      <motion.div
-        initial={{ opacity: 0, x: 0 }} 
-        whileInView={{ opacity: 1, x: 0 }} 
-        transition={{ duration: 0.57, ease: "linear" }}
-        viewport={{ once: true }}
-        className="w-full max-w-2xl py-16 px-16 backdrop-blur-[17.6px] border-2 border-solid border-[rgba(85,85,85,1)] flex flex-col gap-6"
-        style={{
-          background: `radial-gradient(65.88% 97.53% at 50.04% 50.06%, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0) 100%)`,
-        }}
-      >
-        <motion.div
+     <AnimatedWrapper
+  initial={{ opacity: 0, x: 0 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.57, ease: "linear" }}
+  className=" w-full max-w-2xl py-16 px-16  z-10 backdrop-blur-[17.6px] border-2 border-solid border-[rgba(85,85,85,1)] flex flex-col gap-6 bg-[radial-gradient(65.88%_97.53%_at_50.04%_50.06%,rgba(255,255,255,0.17)_0%,rgba(255,255,255,0)_100%)]"
+>
+  {/* Your content */}
+
+        <AnimatedWrapper
           initial={{ opacity: 0.8, x: -200 }}
-          whileInView={{ opacity: 1, x: 0 }} 
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.69, ease: "easeOut" }}
-          viewport={{ once: true }}
           className="flex flex-col gap-8"
         >
           <div className="flex flex-col gap-3">
@@ -45,8 +41,8 @@ function HeroLeft() {
               Import Resume
             </button>
           </div>
-        </motion.div>
-      </motion.div>
+        </AnimatedWrapper>
+      </AnimatedWrapper>
     </div>
   );
 }

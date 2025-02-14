@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import withBundleAnalyzer from "@next/bundle-analyzer";
 
-export default nextConfig;
+const config = {
+  compress: true,
+  productionBrowserSourceMaps: false,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+};
+
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})(config);
