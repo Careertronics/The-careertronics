@@ -1,22 +1,16 @@
 
-import AnimatedWrapper from "@/components/AnimatedWrapper";
+
 
 function HeroLeft() {
   return (
     <div className="flex items-center justify-center p-6 md:pr-15 pt-12">
-     <AnimatedWrapper
-  initial={{ opacity: 0, x: 0 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.57, ease: "linear" }}
-  className=" w-full max-w-2xl py-16 px-16  z-10 backdrop-blur-[17.6px] border-2 border-solid border-[rgba(85,85,85,1)] flex flex-col gap-6 bg-[radial-gradient(65.88%_97.53%_at_50.04%_50.06%,rgba(255,255,255,0.17)_0%,rgba(255,255,255,0)_100%)]"
+  <div
+  className="animate-fadeIn w-full max-w-2xl py-16 px-16  z-10 backdrop-blur-[17.6px] border-2 border-solid border-[rgba(85,85,85,1)] flex flex-col gap-6 bg-[radial-gradient(65.88%_97.53%_at_50.04%_50.06%,rgba(255,255,255,0.17)_0%,rgba(255,255,255,0)_100%)]"
 >
-  {/* Your content */}
 
-        <AnimatedWrapper
-          initial={{ opacity: 0.8, x: -200 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.69, ease: "easeOut" }}
-          className="flex flex-col gap-8"
+
+        <div
+          className="animate-slideInLeft flex flex-col gap-8"
         >
           <div className="flex flex-col gap-3">
             <span className="text-[rgb(184,6,7)] font-poppins text-center text-3xl font-bold drop-shadow-[0px_4px_4px_rgba(0,0,0,0.67)]">
@@ -41,8 +35,8 @@ function HeroLeft() {
               Import Resume
             </button>
           </div>
-        </AnimatedWrapper>
-      </AnimatedWrapper>
+        </div>
+      </div>
     </div>
   );
 }

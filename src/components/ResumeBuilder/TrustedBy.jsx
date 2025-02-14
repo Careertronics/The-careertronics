@@ -1,14 +1,11 @@
 
 import Image from "next/image";
-import AnimatedWrapper from "@/components/AnimatedWrapper";
+
 
 function TrustedBy() {
   return (
-    <AnimatedWrapper
-      initial={{ opacity: 0, y: -70 }} 
-      whileInView={{ opacity: 1, y: 0 }} 
-      transition={{ duration: 0.69, ease: "easeOut" }}
-      className="flex items-center justify-center h-auto"
+    <div
+      className="animate-slideInTop flex items-center justify-center h-auto"
     >
       <div
         className="p-1 rounded-[65px] w-64"
@@ -31,7 +28,7 @@ function TrustedBy() {
           </div>
         </div>
       </div>
-    </AnimatedWrapper>
+    </div>
   );
 }
 

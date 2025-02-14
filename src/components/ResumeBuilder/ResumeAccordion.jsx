@@ -2,8 +2,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
-import { isMobile } from "react-device-detect"; // ✅ Import mobile detector
+import ScrollReveal from '@/components/ScrollReveal';
 
 const AccordionItem = ({ title, content, isOpen, onClick, index }) => {
   const accordionContent = (
@@ -34,25 +33,18 @@ const AccordionItem = ({ title, content, isOpen, onClick, index }) => {
     </>
   );
 
-  // 🛑 **NO Animation for Mobile**
-  if (isMobile) {
-    return <div className="border border-gray-200 mb-2">{accordionContent}</div>;
-  }
-
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -400 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{
-        duration: 0.8,
-        ease: [0.25, 0.75, 0.3, 1],
-        delay: 0.2 * index,
-      }}
-      viewport={{ once: true }}
-      className="border border-gray-200 mb-2"
+    <ScrollReveal
+      animation="fadeSlideLeft"
+      duration={800}
+      delay={100}
+      stagger={120}
+      index={index}
+      easing="gentle"
+      className="border border-gray-200 mb-2 bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow duration-300"
     >
       {accordionContent}
-    </motion.div>
+    </ScrollReveal>
   );
 };
 
@@ -66,7 +58,6 @@ AccordionItem.propTypes = {
 
 const ResumeAccordion = (props) => {
   const [openIndex, setOpenIndex] = useState(null);
-
   const items = [
     {
       title: "What is a Resume?",
@@ -101,7 +92,7 @@ const ResumeAccordion = (props) => {
   return (
     <div
       {...props}
-      className="w-full"
+      className="w-full max-w-3xl mx-auto"
       role="tablist"
       aria-label="Resume FAQ Accordion"
     >

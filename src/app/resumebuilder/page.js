@@ -14,8 +14,7 @@ import IconHover from "@/components/ResumeBuilder/IconHover";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import dynamic from "next/dynamic";
-
-import AnimatedWrapper from "@/components/AnimatedWrapper";
+import ScrollReveal from "@/components/ScrollReveal";
 const ResumeAccordion = dynamic(
   () => import("@/components/ResumeBuilder/ResumeAccordion"),
   {
@@ -51,7 +50,11 @@ function page() {
                     image={element.icon}
                     heading={element.title}
                     description={element.description}
-                    initial={idx===3||idx===4||idx===5? {x:-300} : {x:300}}
+                    initial={
+                      idx === 3 || idx === 4 || idx === 5
+                        ? { x: -300 }
+                        : { x: 300 }
+                    }
                     groupIndex={idx}
                   />
                 ))}
@@ -64,21 +67,27 @@ function page() {
       <div className="bg-slate-50 w-full h-auto">
         <div className="bg-slate-50 pt-6 px-5 md:max-w-6xl lg:max-w-7xl mx-auto flex flex-col">
           <div className="px-8 py-[4.5rem] flex flex-col items-center justify-around gap-10">
-            <AnimatedWrapper
-              initial={{ opacity: 0, y: -500 }}
-              transition={{ duration: 0.8 }}
+            <ScrollReveal
+              animation="slideDown"
+              duration={1000}
+              easing="bouncy"
+              className="mb-12"
             >
               <h2 className="text-2xl font-poppins font-semibold">
                 3 EASY STEPS TO CREATE YOUR PERFECT RESUME
               </h2>
-            </AnimatedWrapper>
+            </ScrollReveal>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
               {features.map((feature, index) => (
-                <AnimatedWrapper
+                <ScrollReveal
                   key={index}
-                  initial={{ opacity: 0, y: 500 }}
-                  transition={{ duration: 0.5, delay: feature.delay }}
+                  animation="slideUp"
+                  duration={800}
+                  delay={200}
+                  stagger={150} // Each item will be delayed by 150ms
+                  index={index}
+                  easing="spring"
                   className="flex flex-col items-center gap-4 p-4"
                 >
                   <IconHover icon={feature.Icon} />
@@ -88,7 +97,7 @@ function page() {
                   <article className="text-justify text-base font-extralight">
                     {feature.description}
                   </article>
-                </AnimatedWrapper>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -96,15 +105,17 @@ function page() {
       </div>
 
       <div className="bg-[url(/page3Bg.svg)] pt-20 pb-20 px-5 bg-cover bg-center h-auto w-full">
-        <AnimatedWrapper
-          initial={{ opacity: 0, y: -200 }}
-          transition={{ duration: 0.8 }}
-        >
+      <ScrollReveal
+              animation="slideRight"
+              duration={500}
+              easing="smooth"
+              className="mb-12"
+            >
           <h2 className="text-white text-center text-2xl md:text-3xl font-semibold mb-20">
             Pick one of many world-class templates <br /> and build your resume
             in minutes
           </h2>
-        </AnimatedWrapper>
+        </ScrollReveal>
         {/* 
         <AnimatedWrapper
           initial={{ opacity: 0.8, x: -1000 }}
@@ -130,7 +141,10 @@ function page() {
 
       <div className="bg-slate-50 w-full h-auto">
         <div className="bg-slate-50 py-20 px-5 md:max-w-6xl lg:max-w-7xl mx-auto flex flex-col">
-          <div className="flex justify-start gap-8 items-stretch mb-16">
+          <ScrollReveal
+              animation="slideRight"
+              duration={500}
+              easing="smooth" className="flex justify-start gap-8 items-stretch mb-16">
             <div className="h-auto w-24">
               <Image
                 alt="Resumelogo"
@@ -140,7 +154,9 @@ function page() {
                 className="w-full h-full"
               />
             </div>
-            <div className="flex flex-col justify-between items-start py-1">
+            <div
+      
+             className="flex flex-col justify-between items-start py-1">
               <h3 className="text-3xl font-medium font-inter">
                 Have Questions About Writing A Great Resume ?
               </h3>
@@ -148,7 +164,7 @@ function page() {
                 Expert answer to all your resume inquiries
               </p>
             </div>
-          </div>
+          </ScrollReveal>
           <ResumeAccordion />
         </div>
       </div>
